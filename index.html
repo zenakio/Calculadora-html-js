@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="shortcut icon" href="image/calculadora.png">
+</head>
+
+<body>
+    <h2>Calculadora básica</h2>
+    <form>
+        <label for="num1">Informe o 1º número</label>
+        <input id="num1" type="number"><br><br>
+        <label for="num2">Informe o 2º número</label>
+        <input id="num2" type="number"><br><br>
+        <button type="button" onclick="calcular('somar')">Calcular</button>
+        <button type="button" onclick="calcular('subtrair')">Subtrair</button>
+        <button type="button" onclick="calcular('multiplicar')">Multiplicar</button>
+        <button type="button" onclick="calcular('dividir')">Dividir</button>
+        <button type="reset">Reset</button>
+
+    </form>
+    <h4>Resultado:</h4>
+    <div id="resultado"></div>
+    <script>
+        function calcular(operacao) {
+            //Pegar os valores do formulário
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            //Realiza os calculos
+            switch (operacao) {
+                case 'somar':
+                    resultado = num1 + num2;
+                    break;
+                case 'subtrair':
+                    resultado = num1 - num2;
+                    break;
+                case 'multiplicar':
+                    resultado = num1 * num2;
+                    break;
+                case 'dividir':
+                    if (num2 != 0) {
+                        resultado = num1 / num2;
+                    } else {
+                        resultado = "Não é possível dividir um número por zero (0)"
+                    }
+
+                    break;
+            }
+            document.getElementById('resultado').textContent = resultado;
+        }
+    </script>
+</body>
+
+</html>
