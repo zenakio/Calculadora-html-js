@@ -6,50 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <link rel="shortcut icon" href="image/calculadora.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h2>Calculadora básica</h2>
-    <form>
+    <form id="formCalc">
         <label for="num1">Informe o 1º número</label>
         <input id="num1" type="number"><br><br>
         <label for="num2">Informe o 2º número</label>
         <input id="num2" type="number"><br><br>
+
         <button type="button" onclick="calcular('somar')">Calcular</button>
         <button type="button" onclick="calcular('subtrair')">Subtrair</button>
         <button type="button" onclick="calcular('multiplicar')">Multiplicar</button>
         <button type="button" onclick="calcular('dividir')">Dividir</button>
-        <button type="reset">Reset</button>
-
+        <button type="reset" onclick="limparResultado()">Reset</button>
     </form>
-    <h4>Resultado:</h4>
-    <div id="resultado"></div>
+
+    <div class="resultado-container">
+        <div class="resultado-titulo">Resultado:</div>
+        <div id="resultado"></div>
+    </div>
+
     <script>
         function calcular(operacao) {
-            //Pegar os valores do formulário
-            let num1 = parseFloat(document.getElementById('num1').value);
-            let num2 = parseFloat(document.getElementById('num2').value);
-            //Realiza os calculos
-            switch (operacao) {
-                case 'somar':
-                    resultado = num1 + num2;
-                    break;
-                case 'subtrair':
-                    resultado = num1 - num2;
-                    break;
-                case 'multiplicar':
-                    resultado = num1 * num2;
-                    break;
-                case 'dividir':
-                    if (num2 != 0) {
-                        resultado = num1 / num2;
-                    } else {
-                        resultado = "Não é possível dividir um número por zero (0)"
-                    }
+            let num1 = document.getElementById('num1').value;
+            let num2 = document.getElementById('num2').value;
+            let resultado;
 
-                    break;
+            // Verificar se os campos estão vazios
+            if (num1 === "" || num2 === "") {
+                resultado = "Campo obrigatório.";
+            } else {
+                num1 = parseFloat(num1);
+                num2 = parseFloat(num2);
+
+                switch (operacao) {
+                    case 'somar':
+                        resultado = num1 + num2;
+                        break;
+                    case 'subtrair':
+                        resultado = num1 - num2;
+                        break;
+                    case 'multiplicar':
+                        resultado = num1 * num2;
+                        break;
+                    case 'dividir':
+                        resultado = num2 !== 0 ? num1 / num2 : "Não é possível dividir por zero.";
+                        break;
+                }
             }
             document.getElementById('resultado').textContent = resultado;
+        }
+
+        function limparResultado() {
+            document.getElementById('resultado').textContent = "";
         }
     </script>
 </body>
