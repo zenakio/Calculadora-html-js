@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon</title>
+    <link rel="shortcut icon" href="image/pk.png">
+    <link rel="stylesheet" href="type.css">
+</head>
+
+<body>
+    <h2>Pokémon</h2>
+
+    <form id="formCalc">
+        <label for="pokemon">Informe o Pokémon</label>
+        <input id="pokemon" type="text" placeholder="Ex: pikachu, bulbasaur">
+        <button type="button" onclick="inserirPokemon()">Inserir</button>
+    </form>
+
+    <div id="resultContainer"></div>
+
+    <script>
+        function inserirPokemon() {
+            let pokemon = document.getElementById('pokemon').value.toLowerCase().trim();
+
+            if (pokemon === "") {
+                alert("Por favor, informe o nome de um Pokémon.");
+                return;
+            }
+
+            fetch("https://pokeapi.co/api/v2/pokemon/" + pokemon)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error("Pokémon não encontrado!");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    const card = `
+                        <div class="pokemon-card">
+                            <p><strong>Nome:</strong> ${data.name}</p>
+                            <p><strong>Altura:</strong> ${data.height / 10} m</p>
+                            <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
+                            <img src="${data.sprites.front_default}" alt="${data.name}">
+                        </div>
+                    `;
+
+                    document.getElementById('resultContainer').innerHTML = card;
+                })
+                .catch(err => {
+                    document.getElementById('resultContainer').innerHTML = `
+                        <div class="pokemon-card">
+                            <p>Pokémon não encontrado. Tente novamente.</p>
+                        </div>
+                    `;
+                    console.error(err);
+                });
+        }
+    </script>
+</body>
+
+</html>

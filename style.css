@@ -49,6 +49,15 @@ input[type="number"] {
     border-radius: 5px;
 }
 
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
 /* Botões */
 button {
     margin: 5px;
@@ -79,7 +88,7 @@ button:hover {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Fundo azul claro e padding para o texto "Resultado:", sem borda */
+/* Fundo azul claro e padding para o texto "Resultado:", */
 .resultado-titulo {
     display: inline-block;
     padding: 10px 15px;
@@ -90,7 +99,7 @@ button:hover {
     margin-bottom: 15px;
 }
 
-/* Resultado numérico sem borda */
+/* Resultado numérico */
 #resultado {
     padding: 12px;
     border-radius: 8px;

@@ -1,0 +1,134 @@
+/* Importando uma fonte divertida do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body geral */
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(135deg, #ffcb05, #3b4cca);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Título */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #ff1c1c;
+    text-shadow: 2px 2px #000000;
+}
+
+/* Formulário */
+form {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Labels */
+label {
+    font-size: 1rem;
+    color: #ffffff;
+    text-shadow: 1px 1px #000;
+}
+
+/* Input */
+input[type="text"] {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: #f0f0f0;
+    color: #333;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Botão */
+button {
+    padding: 12px 20px;
+    background-color: #e3350d;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Press Start 2P', cursive;
+}
+
+button:hover {
+    background-color: #b71c1c;
+}
+
+/* Cartão com os dados do Pokémon */
+.pokemon-card {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    text-align: center;
+    max-width: 400px;
+    color: #fff;
+}
+
+.pokemon-card img {
+    margin-top: 20px;
+    width: 200px;
+}
+
+.pokemon-card p {
+    font-size: 1rem;
+    margin: 10px 0;
+    text-shadow: 1px 1px #000;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    body {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    input[type="text"] {
+        font-size: 0.8rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+    }
+
+    .pokemon-card {
+        padding: 20px;
+    }
+
+    .pokemon-card img {
+        width: 150px;
+    }
+}
